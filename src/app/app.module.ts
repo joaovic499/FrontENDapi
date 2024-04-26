@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
@@ -10,14 +11,16 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './views/home/home.component';
-import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ElementDialogComponent } from './shared/element-dialog/element-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ElementDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatToolbarModule,
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(),

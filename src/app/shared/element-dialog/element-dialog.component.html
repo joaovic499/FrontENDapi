@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Create element</h2>
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Number</mat-label>
+    <input matInput [(ngModel)]="data.number">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input matInput [(ngModel)]="data.name">
+</mat-form-field>
+</mat-dialog-content>
+
+<mat-form-field>
+  <mat-label>Weight</mat-label>
+  <input matInput [(ngModel)]="data.weight">
+</mat-form-field>
+</mat-dialog-content>
+
+<mat-form-field>
+  <mat-label>Symbol</mat-label>
+  <input matInput [(ngModel)]="data.symbol">
+</mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Create</button>
+</mat-dialog-actions>
