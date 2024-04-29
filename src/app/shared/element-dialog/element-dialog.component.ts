@@ -24,7 +24,7 @@ export class ElementDialogComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: PeriodicElement,
   ) {}
   ngOnInit(): void {
-    if (this.data.position != null){
+    if (this.data.codigo != null){
       this.isChange = true;
     } else {
       this.isChange = false;

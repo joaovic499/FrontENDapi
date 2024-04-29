@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'actions'];
+  displayedColumns: string[] = ['nome', 'idade', 'codigo', 'actions'];
   dataSource!: PeriodicElement[];
 
   constructor(public dialog: MatDialog,
@@ -37,26 +37,24 @@ openDialog(element: PeriodicElement | null ): void {
   const dialogRef = this.dialog.open(ElementDialogComponent, {
     width: '250px',
     data: element === null ? {
-      position: null,
-      name: '',
-      weight: null,
-      symbol: ''
+      nome: '',
+      idade: null,
+      codigo: null,
     } : {
     id: element.id,
-    position: element.position,
-    name: element.name,
-    weight: element.weight,
-    symbol: element.symbol
+    nome: element.nome,
+    idade: element.idade,
+    codigo: element.codigo
   }
   });
 
   dialogRef.afterClosed().subscribe(result => {
 if(result !== undefined ) {
-  if (this.dataSource.map(p => p.position).includes(result.id)){
+  if (this.dataSource.map(p => p.id).includes(result.id)){
     this.periodicElementService.editElement(result)
       .subscribe((data: PeriodicElement) => {
         const index = this.dataSource.findIndex(p => p.id === data.id );
-        this.dataSource[result.position - 1] = result;
+        this.dataSource[result.codigo - 1] = result;
         this.table.renderRows();
       } )
 
@@ -79,10 +77,10 @@ editElement(element: PeriodicElement): void {
 
 
 }
-deleteElement(position: number): void {
-  this.periodicElementService.deleteElement(position)
+deleteElement(id: number): void {
+  this.periodicElementService.deleteElement(id)
   .subscribe(() => {
-    this.dataSource = this.dataSource.filter(p => p.id !== position);
+    this.dataSource = this.dataSource.filter(p => p.id !== id);
   });
  }
 }
